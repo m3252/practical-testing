@@ -77,17 +77,20 @@ class CafeKioskTest {
         assertThat(cafeKiosk.getBeverages()).isEmpty();
     }
 
-//    @Test
-    void createOrder() {
+    @Test
+    void calculateTotalPrice() {
         CafeKiosk cafeKiosk = new CafeKiosk();
         Americano americano = new Americano();
+        Latte latte = new Latte();
 
         cafeKiosk.add(americano);
+        cafeKiosk.add(latte);
 
-        Order order = cafeKiosk.createOrder(null);
-        assertThat(order.getBeverages()).hasSize(1);
-        assertThat(order.getBeverages().get(0).getName()).isEqualTo("아메리카노");
+        int totalPrice = cafeKiosk.calculateTotalPrice();
+        assertThat(totalPrice).isEqualTo(8500);
     }
+
+
 
     @Test
     void createOrderWithCurrentTime() {

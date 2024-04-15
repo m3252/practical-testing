@@ -42,17 +42,6 @@ public class CafeKiosk {
                 .sum();
     }
 
-//    public Order createOrder() {
-//        LocalDateTime currentDateTime = LocalDateTime.now();
-//        LocalTime currentTime = currentDateTime.toLocalTime();
-//
-//        if (currentTime.isBefore(SHOP_OPEN_TIME) || currentTime.isAfter(SHOP_CLOSE_TIME)) {
-//            throw new IllegalStateException("현재 주문을 받을 수 없는 시간입니다.");
-//        }
-//
-//        return new Order(currentDateTime, beverages);
-//    }
-
     public Order createOrder(LocalDateTime currentDateTime) {
         LocalTime currentTime = currentDateTime.toLocalTime();
 
@@ -66,4 +55,5 @@ public class CafeKiosk {
     public List<Beverage> getBeverages() {
         return beverages;
     }
+
 }
