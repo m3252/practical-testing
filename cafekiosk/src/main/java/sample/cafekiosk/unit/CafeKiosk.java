@@ -4,10 +4,14 @@ import sample.cafekiosk.unit.beverage.Beverage;
 import sample.cafekiosk.unit.order.Order;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CafeKiosk {
+
+    public static final LocalTime SHOP_OPEN_TIME = LocalTime.of(10, 0);
+    public static final LocalTime SHOP_CLOSE_TIME = LocalTime.of(22, 0);
 
     private final List<Beverage> beverages = new ArrayList<>();
 
@@ -38,8 +42,25 @@ public class CafeKiosk {
                 .sum();
     }
 
-    public Order createOrder() {
-        return new Order(LocalDateTime.now(), beverages);
+//    public Order createOrder() {
+//        LocalDateTime currentDateTime = LocalDateTime.now();
+//        LocalTime currentTime = currentDateTime.toLocalTime();
+//
+//        if (currentTime.isBefore(SHOP_OPEN_TIME) || currentTime.isAfter(SHOP_CLOSE_TIME)) {
+//            throw new IllegalStateException("현재 주문을 받을 수 없는 시간입니다.");
+//        }
+//
+//        return new Order(currentDateTime, beverages);
+//    }
+
+    public Order createOrder(LocalDateTime currentDateTime) {
+        LocalTime currentTime = currentDateTime.toLocalTime();
+
+        if (currentTime.isBefore(SHOP_OPEN_TIME) || currentTime.isAfter(SHOP_CLOSE_TIME)) {
+            throw new IllegalStateException("현재 주문을 받을 수 없는 시간입니다.");
+        }
+
+        return new Order(currentDateTime, beverages);
     }
 
     public List<Beverage> getBeverages() {
