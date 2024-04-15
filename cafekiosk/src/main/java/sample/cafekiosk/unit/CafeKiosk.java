@@ -5,7 +5,6 @@ import sample.cafekiosk.unit.order.Order;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class CafeKiosk {
@@ -14,6 +13,15 @@ public class CafeKiosk {
 
     public void add(Beverage beverage) {
         beverages.add(beverage);
+    }
+
+    public void add(Beverage beverage, int count) {
+        if (count <= 0) {
+            throw new IllegalArgumentException("음료는 1잔 이상 주문할 수 있습니다.");
+        }
+        for (int i = 0; i < count; i++) {
+            beverages.add(beverage);
+        }
     }
 
     public void remove(Beverage beverage) {
