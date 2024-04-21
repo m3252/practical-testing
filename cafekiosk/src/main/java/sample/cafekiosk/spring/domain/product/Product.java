@@ -5,6 +5,11 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
+import static sample.cafekiosk.spring.domain.product.ProductType.BAKERY;
+import static sample.cafekiosk.spring.domain.product.ProductType.BOTTLE;
+
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Product {
@@ -58,4 +63,6 @@ public class Product {
     public int getPrice() {
         return price;
     }
+
+
 }
