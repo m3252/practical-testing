@@ -8,7 +8,7 @@ import sample.cafekiosk.spring.domain.product.ProductType;
 @Getter
 public class ProductResponse {
     private Long id;
-    private String ProductNumber;
+    private String productNumber;
     private ProductType type;
     private ProductSellingStatus sellingStatus;
     private String name;
@@ -16,7 +16,7 @@ public class ProductResponse {
 
     public ProductResponse(Long id, String productNumber, ProductType type, ProductSellingStatus sellingStatus, String name, int price) {
         this.id = id;
-        ProductNumber = productNumber;
+        this.productNumber = productNumber;
         this.type = type;
         this.sellingStatus = sellingStatus;
         this.name = name;

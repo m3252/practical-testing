@@ -2,6 +2,7 @@ package sample.cafekiosk.spring.domain.product;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 @Entity
@@ -12,7 +13,7 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String ProductNumber;
+    private String productNumber;
 
     @Enumerated(EnumType.STRING)
     private ProductType type;
@@ -24,12 +25,22 @@ public class Product {
 
     private int price;
 
+    @Builder
+    private Product(Long id, String productNumber, ProductType type, ProductSellingStatus sellingStatus, String name, int price) {
+        this.id = id;
+        this.productNumber = productNumber;
+        this.type = type;
+        this.sellingStatus = sellingStatus;
+        this.name = name;
+        this.price = price;
+    }
+
     public Long getId() {
         return id;
     }
 
     public String getProductNumber() {
-        return ProductNumber;
+        return productNumber;
     }
 
     public ProductType getType() {
