@@ -1,11 +1,14 @@
 package sample.cafekiosk.spring.api.service.product.response;
 
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import sample.cafekiosk.spring.domain.product.Product;
 import sample.cafekiosk.spring.domain.product.ProductSellingStatus;
 import sample.cafekiosk.spring.domain.product.ProductType;
 
 @Getter
+@NoArgsConstructor
 public class ProductResponse {
     private Long id;
     private String productNumber;
@@ -14,7 +17,8 @@ public class ProductResponse {
     private String name;
     private int price;
 
-    public ProductResponse(Long id, String productNumber, ProductType type, ProductSellingStatus sellingStatus, String name, int price) {
+    @Builder
+    private ProductResponse(Long id, String productNumber, ProductType type, ProductSellingStatus sellingStatus, String name, int price) {
         this.id = id;
         this.productNumber = productNumber;
         this.type = type;
@@ -24,13 +28,13 @@ public class ProductResponse {
     }
 
     public static ProductResponse of(Product product) {
-        return new ProductResponse(
-                product.getId(),
-                product.getProductNumber(),
-                product.getType(),
-                product.getSellingStatus(),
-                product.getName(),
-                product.getPrice()
-        );
+        return ProductResponse.builder()
+                .id(product.getId())
+                .productNumber(product.getProductNumber())
+                .type(product.getType())
+                .sellingStatus(product.getSellingStatus())
+                .name(product.getName())
+                .price(product.getPrice())
+                .build();
     }
 }
