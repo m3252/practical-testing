@@ -1,7 +1,6 @@
 package sample.cafekiosk.spring.domain.order;
 
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 @Getter
 public enum OrderStatus {
